@@ -1,0 +1,69 @@
+Global 
+=======================
+ - docker [comando (images, create, ...)] --help = Muestra un manual del comando.
+    Ej: docker create --help
+
+- docker build -t [nombre personalizado de la imagen] [ruta al archivo Dockerfile]  = Ejecuta un proyecto Docker, es decir ejecuta el archivo Dockerfile.
+    Ej: docker build -t miapp:1 .
+
+Imagenes
+=========================
+
+- docker images = Muestra todas las imagenes descargadas.
+
+- docker pull node = Descarga la ultima version del contenedor de NodeJS, de Docker Hub
+
+- docker pull node:18 = Descargar la version 18 de NodeJS
+
+- docker pull --platform linux/x86_64 mysql = Descarga la ultima version de mysql para una plataforma en concreto, que es Linux.
+
+- docker image rm [nombre de la imagen a eliminar (node:16)] = Elimina una imagen.
+
+
+
+Contenedores
+===================
+
+- docker create [nombre de la imagen (mongo)] / docker container create [nombre de la imagen (mongo)] = Crea un contenedor a partir de una imagen. Devolvera un ID, hace reference al contenedor creado.
+
+- docker start [ID o NOMBRE del contenedor] = Arranca el contenedor.
+
+- docker ps = Muestra los contenedores en activo.
+
+- docker stop [ID o NOMBRE del contenedor] = Para el contenedor.
+
+- docker ps -a = Muestra todos los contenedores.
+
+- docker rm [Nombre del contenedor]  = Elimina el contenedor.
+
+- docker create --name [nombre personalizado del contenedor (monguito)] [nombre de la imagen (mongo)] = Crea un contenedor a partir de una imagen, asignandole un nombre personalizado al contenedor.
+
+- docker logs [NOMBRE o ID del contenedor] = Muestra todos los logs del contenedor.
+
+- docker logs --follow [NOMBRE o ID del contenedor] = Muestra los logs del contenedor sin devolver a linea de comandos.
+
+- docker run [nombre de la imagen] = Inicia un contenedor a partir de una imagen. Si la imagen no existe en el equipo, la descarga.
+
+- docker run -d [nombre de la imagen] = Inicia un contenedor a partir de una imagen. Si la imagen no existe en el equipo, la descarga. No muestra los logs.
+
+- docker run --name [nombre personalizado de la imagen] -p[puerto anfitrion]:[puerto contenedor] -d [nombre de la imagen] = Combina los demas comandos en uno solo.
+    Ej: docker run --name tarzan -p27017:27017 -d mongo
+
+Port Mapping
+===================
+- docker create -p[puerto del anfitrion]:[puerto del contenedor] --name [nombre personalizado del contenedor] [nombre de la imagen] = Asigna un puerto en el anfitrion para conectarse al contenedor. Soluciona si hay dos contenedores con el mismo puerto.
+    Ej: docker create -p27017:27017 --name tarzan mongo
+
+Docker Networks
+===================
+- docker network ls = Lista todas las redes creadas en Docker.
+- docker create network [nombre personalizado de la red] = Crea una nueva red.
+- docker network rm [nombre de la red] = Elimina una red
+
+Docker Compose
+====================
+- docker compose up = Ejecuta el archivo "docker-compose.yaml" en la misma ruta que se ejecuta.
+- docker compose down = Elimina todos los contenedores creados con "docker compose up".
+- docker compose -f [ruta al archivo] up = Ejecuta un archivo docker compose en concreto.
+
+

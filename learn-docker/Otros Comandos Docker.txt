@@ -1,0 +1,3 @@
+- docker create -p27017:27017 --name monguito -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root mongo
+
+- docker create -p27017:27017 --name tarzan --network mired -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root mongo

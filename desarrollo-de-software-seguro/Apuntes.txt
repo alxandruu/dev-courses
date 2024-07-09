@@ -1,0 +1,141 @@
+MITOS
+--------
+	- La seguridad del software es responsabilidad del programador.
+	- No se encontraron vulnerabilidades, hasta ahora
+	- Nadie sabe cómo funciona, por lo tanto, no atacarán.
+	- No hay tiempo para incluir seguridad en el desarrollo de software.
+	- No hay manera de explotar el software.
+--------
+
+
+
+
+
+----------------------
+Pruebas que quiero realizar Liferay
+---- 
+Inyectar sentencia SQL a través de un formulario.
+
+-----------------------
+
+
+-----------------
+APPS
+-----------------
+- Beef Panel 
+- WebGoat.net
+- Aplicación ZAP OWASP
+
+
+
+7. Vulnerabilidad Cross-Site Scripting
+------------------------------------
+- Es una vulnerabilidad,  puedes controlar un PC de forma remota a través de inyección de código a través de la web. 
+Por ejemplo inyectar un script en un comentario público que llama a un script malicioso que permite controlar el navegador del usuario.
+
+- https://developer.mozilla.org/es/docs/Web/HTTP/CSP
+
+
+---------------------------
+8. Seguridad desde el diseño
+---------------------------
+- Reducción de superfiece de ataque -> investigar las oportunidades que un ataquente puede atacar. Por ejemplo, verificar el SO del entorno, que puertos estan abiertos, etc.
+- Criterio del menor privilegio -> si un programa tiene una vulnerabilidad, ese programa debe  tener los menos privilegios posibles.
+- Fallar de manera segura ->  fallar en una causistica donde no esta controlada. Por ejemplo, tomcat se crashea a través de un ataque de BufferCrashing.
+- Criterio de defensa en profundidad -> es hacerle la vida imposible al hacker, cuando un hacker haya hackeado. Por ejemplo, archivos cifrados, contraseñas cifradas, etc.
+- Diseño seguro de mensajes de error ->  cambiar los errores 404 403 para no mostrar mas de lo debido.
+- Diseño de seguro de autenticación ->  api que sirva para autenticar
+- Separación de privilegios -> tengo el servidor web y el sistema operativo, cada carpeta tenga los permisos correcto asignados.
+- Interacción "amigable" con Firewalls e IDS's -> 
+- Administración segura información Sensible
+- Diseño de Auditoría y Logging -> auditar la cantidad de usuarios que acceden al SW.
+- Análisis de riesgo. -> analizar el SW para detectar vulnerabilidades.
+
+-- IMPORTANTE: La seguridad desde el diseño es importante, antes de crear un SW. Hay que verificar todo esto.
+
+-------------------------
+9. Vulnerabilidad Path Traversal
+---------------------------
+- Impedir acceso a archivos que no deben tener acceso. Crear una lista negra, o filtrar por su extension, etc.
+
+- Se modifica la URL para acceder a contenido confidencial.
+
+
+- BUENAS PRACTICAS: por ejemplo cuando intente acceder a un archivo confidencial, auditarlo y mostrar un mensaje.
+
+-------------------------
+10. Los 7 touch points, como aplicar la seguridad en el desarrollo de software
+--------------------------
+- Ciclo de deming
+
+Touch points:
+1. Code Review
+2.  Architectural risk analysis.
+3. Penetration testing
+4. Risk-based security tests
+5. Abuse cases
+6. Security requirements.
+7. Security operations
+
+
+
+11. Vulnerabilidad Ejecución remota de Comandos
+----------------------------
+- Subir archivos malicisios a través de la subida de archivos del portal. Pueden ser imagenes, pdf, etc con virus. Con el objetivo de controlar el servidor donde esta la aplicación.
+- Riesgo alto, Impacto alto.
+- `Consejos:
+	- Restringir las extensiones de los archivos subidos.
+	- Identificar el Header para la identificación del archivo. (Defensa en profundidad "hazle la vida imposible al hacker, un nivel + de seguridad")
+	- 
+
+CASO REAL: al acceder al servidor copiar todos los archivos del servidor afectado a uno externo perteneciente al hacker, crear ejecutables, etc. De todo.
+
+	- python -m SimpleHTTPServer
+
+---------------------------------------
+12. Gestión de Riesgos de Software
+------------------------------------------
+
+Architectural risk analysis:
+	- Si no conocemos el riesgo, no sabemos que debemos proteger.
+	- Gestión del riesgo:
+		- Todas las decisiones se deben tomar con el conocimiento de los riesgos que implican.
+	- Tratamiento del riesgo:
+		1. Mitigar el riesgo.
+		2. Transferir el riesgo.
+		3. Evitar el riesgo.
+		4. Aceptar el riesgo.
+	- Resultados
+
+
+----------
+13. Ataque de Fuerza Bruta, Utilizando OWASP ZAP
+----------
+- Implementar seguridad en las contraseñas del login (por ejemplo, min 8 carácteres, carácteres especiales, etc)
+
+----
+14. Penetration testing
+----
+Fases:
+	1. Fase de reconocimiento
+	2. Fase de escaneo
+	3. Fase de enumeración
+	4. Fase de acceso
+	5. Fase de mantenimiento de acceso
+Herrameintas que podemos usar:
+	1. ZAP PROXY
+	2. SQLMAP
+	3. BEEF
+Resultados esperados
+	Reporte gerencial
+
+
+----
+15. Vulnerabilidad Cross-site request forgery
+-----
+- Vulnerabilidad Alta.
+- CSRF
+Ejemplo vulnerabilidades:
+	- Suplantar un formulario autoejecutable de envio de dinero cuando un usuario ya tiene logueado sesion en el sitio real.
+	- Suplantar contenido de un portal web y alojarlo en un sitio malicioso.
+	

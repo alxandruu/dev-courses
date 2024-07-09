@@ -1,0 +1,47 @@
+Docker = Contenedores
+----------------------
+
+¿Qué es un contenedor?
+=======================
+ - Forma de empaquetar nuestras aplicaciones con todas las dependencias y archivos de configuración.
+ - También hace que sea fácil de compartir con distintos desarrolladores y devops, es decir, es portable.
+
+¿Donde se almacenan?
+====================
+ - En repositorios de contendores, hay dos tipos: privados y publicos (Docker Hub).
+
+¿Para qué sirve?
+======================
+ - Facilita el montaje del entorno de desarrollo en el ordenador, instalando los programas con las mismas versiones que los demas.
+ - También facilita el despliegue en distintos entornos (produccion, UAT, ...)
+
+¿Qué es una imagen y un container?
+====================
+ - Una imagen es un empaquetado del proyecto (codigo, dependencias, ...)
+ - Un container son un conjunto de capas de imagenes para hacer funcionar el proyecto. Una ventaja es que pesan poco, en comparacion si no se usan contenedores. 
+
+¿Qué es la virtualización?
+=====================
+ - VM = Virtual Machine 
+ - El kernel es el encargado de comunicar el hardware con las aplicaciones.
+ - Una VM virtualiza, el hardware, el kernel y las aplicaciones. De esta forma hace que las imagenes pesen muchos GBs. 
+ - En Docker se virtualiza solamente la capa de aplicaciones. En caso del kernel, utilizaría el mismo del SO en el que se esta ejecutando. De esta forma las imagenes pesarían menos (alrededor de 100MBs).
+
+Tipos de Volumenes
+===================
+ - Los volumenes sirven para no perder los datos de los contenedores, de las bases de datos y también de la aplicacion. Hay tres tipos: anonimo, anfitrion/host y nombrado. 
+ - Anonimo: Indicas la ruta donde quieres que sea guardada, y docker se encargará de crearla. Lo malo es que no se pueden referenciar en otro contenedor.
+
+Herramientas Importantes
+================
+ - Docker Hub
+ - Docker Desktop
+ - Docker Compose
+
+
+Otras Notas
+=================
+ - El archivo Dockerfile se utiliza para construir los containers, se escriben las instrucciones. Sirve para desplegar aplicaciones en containers.
+ - El archivo docker-compose se utiliza para automtizar el despliegue de los containers.
+
+
